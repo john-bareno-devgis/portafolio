@@ -23,7 +23,6 @@
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
@@ -235,13 +234,13 @@
 
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
               <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/app-1.jpg" class="img-fluid" alt="">
+                <img src="assets/img/geovisor_arcgis.png" class="img-fluid" alt="">
                 <div class="portfolio-info">
                   <h4>Geovisor</h4>
                   <p>Geovisor desarrollado con ArcGIS</p>
-                  <a href="https://john-bareno-devgis.github.io/Geovisor/" title="Ver aplicación"
-                    class="glightbox4 preview-link"><i class="bi bi-eye"></i></a>
-                  <a href="portfolio-details.html" title="Detalles de este servicio" class="details-link"><i
+                  <a href="https://john-bareno-devgis.github.io/Geovisor/" title="Ver aplicación" target="_blank"
+                    class="preview-link"><i class="bi bi-eye"></i></a>
+                  <a href="details-geovisor.html" title="Detalles de este servicio" class="details-link"><i
                       class="bi bi-list-ul "></i></a>
 
                       
@@ -381,51 +380,6 @@
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-  <script>
-    var lightbox = GLightbox();
-    lightbox.on('open', (target) => {
-        console.log('lightbox opened');
-    });
-    var lightboxDescription = GLightbox({
-        selector: '.glightbox2'
-    });
-    var lightboxVideo = GLightbox({
-        selector: '.glightbox3'
-    });
-    lightboxVideo.on('slide_changed', ({ prev, current }) => {
-        console.log('Prev slide', prev);
-        console.log('Current slide', current);
-
-        const { slideIndex, slideNode, slideConfig, player } = current;
-
-        if (player) {
-            if (!player.ready) {
-                // If player is not ready
-                player.on('ready', (event) => {
-                    // Do something when video is ready
-                });
-            }
-
-            player.on('play', (event) => {
-                console.log('Started play');
-            });
-
-            player.on('volumechange', (event) => {
-                console.log('Volume change');
-            });
-
-            player.on('ended', (event) => {
-                console.log('Video ended');
-            });
-        }
-    });
-
-    var lightboxInlineIframe = GLightbox({
-        selector: '.glightbox4'
-    });
-
-</script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
