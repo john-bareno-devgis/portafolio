@@ -86,6 +86,7 @@
       once: true,
       mirror: false
     });
+    
   }
   window.addEventListener('load', aosInit);
 
