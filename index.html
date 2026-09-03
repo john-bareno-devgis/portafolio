@@ -4,363 +4,595 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>John Bareño — Dev GIS</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap"
-    rel="stylesheet">
+
+  <title>John Bareño — Ingeniero Geoespacial &amp; Desarrollador GIS</title>
+  <meta name="description"
+    content="Ingeniero Catastral y Geodesta especializado en aplicaciones web geoespaciales, GeoAI y automatización con Python. Geovisores, infraestructuras de datos espaciales, bases de datos espaciales y tableros de control. Bogotá, Colombia.">
+  <meta name="author" content="John Bareño">
+  <link rel="canonical" href="https://john-bareno-devgis.github.io/portafolio/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta property="og:url" content="https://john-bareno-devgis.github.io/portafolio/">
+  <meta property="og:title" content="John Bareño — Ingeniero Geoespacial &amp; Desarrollador GIS">
+  <meta property="og:description"
+    content="Aplicaciones web geoespaciales, GeoAI y automatización con Python. Más de 5 años en catastro, ordenamiento territorial y avalúos.">
+  <meta property="og:image" content="https://john-bareno-devgis.github.io/portafolio/assets/img/profile.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="John Bareño — Ingeniero Geoespacial &amp; Desarrollador GIS">
+  <meta name="twitter:description"
+    content="Aplicaciones web geoespaciales, GeoAI y automatización con Python. Más de 5 años en catastro, ordenamiento territorial y avalúos.">
+  <meta name="twitter:image" content="https://john-bareno-devgis.github.io/portafolio/assets/img/profile.png">
+  <meta name="theme-color" content="#04070d">
 
   <link href="assets/img/favicon.ico" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/main.css">
+
+  <!-- Evita el parpadeo de tema al recargar -->
+  <script>
+    try {
+      if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+    } catch (e) { }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Bareño",
+    "jobTitle": "Ingeniero Geoespacial y Desarrollador GIS",
+    "url": "https://john-bareno-devgis.github.io/portafolio/",
+    "email": "johnbarenodevsig@gmail.com",
+    "telephone": "+57 3143103523",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bogotá", "addressCountry": "CO" },
+    "alumniOf": "Universidad Distrital Francisco José de Caldas",
+    "knowsAbout": ["Sistemas de Información Geográfica", "GeoAI", "Python", "PostGIS", "ArcGIS", "Desarrollo web"],
+    "sameAs": [
+      "https://github.com/john-bareno-devgis",
+      "https://www.linkedin.com/in/john-bareno-devgis/"
+    ]
+  }
+  </script>
 </head>
 
 <body>
 
-  <div class="grid-bg"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-  <!-- NAV -->
+  <!-- ============ FONDO CARTOGRÁFICO ============ -->
+  <div class="topo-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <pattern id="grat" width="120" height="120" patternUnits="userSpaceOnUse">
+          <path class="grat-line" d="M120 0 L0 0 0 120" />
+        </pattern>
+        <path id="hillA"
+          d="M0,-110 C58,-118 122,-76 132,-18 C142,42 96,104 28,113 C-42,122 -113,84 -127,22 C-141,-42 -75,-102 0,-110 Z" />
+        <path id="hillB"
+          d="M0,-92 C52,-100 100,-58 106,-6 C112,46 68,94 12,100 C-46,106 -100,66 -106,10 C-112,-46 -60,-84 0,-92 Z" />
+        <path id="hillC"
+          d="M0,-62 C72,-74 152,-46 170,-6 C188,34 130,74 48,82 C-34,90 -122,62 -136,20 C-150,-24 -80,-50 0,-62 Z" />
+      </defs>
+
+      <rect width="1440" height="900" fill="url(#grat)" />
+
+      <!-- ejes mayores -->
+      <g class="major-lines">
+        <line x1="360" y1="0" x2="360" y2="900" />
+        <line x1="1080" y1="0" x2="1080" y2="900" />
+        <line x1="0" y1="300" x2="1440" y2="300" />
+        <line x1="0" y1="660" x2="1440" y2="660" />
+      </g>
+
+      <!-- relieve -->
+      <g class="contours">
+        <g class="drift-a">
+          <g transform="translate(1140,190)">
+            <use href="#hillA" transform="scale(1)" />
+            <use href="#hillA" transform="scale(0.82)" />
+            <use href="#hillA" transform="scale(0.64)" />
+            <use href="#hillA" transform="scale(0.46)" />
+            <use href="#hillA" transform="scale(0.28)" />
+            <use class="peak" href="#hillA" transform="scale(0.13)" />
+            <circle class="vertex" cx="0" cy="0" r="3" />
+          </g>
+        </g>
+
+        <g class="drift-b">
+          <g transform="translate(215,700)">
+            <use href="#hillB" transform="scale(1.25)" />
+            <use href="#hillB" transform="scale(1.02)" />
+            <use href="#hillB" transform="scale(0.79)" />
+            <use href="#hillB" transform="scale(0.56)" />
+            <use href="#hillB" transform="scale(0.33)" />
+            <use class="peak" href="#hillB" transform="scale(0.14)" />
+            <circle class="vertex" cx="0" cy="0" r="3" />
+          </g>
+        </g>
+
+        <g class="drift-c">
+          <g transform="translate(640,430)">
+            <use href="#hillC" transform="scale(1.35)" />
+            <use href="#hillC" transform="scale(1.1)" />
+            <use href="#hillC" transform="scale(0.85)" />
+            <use href="#hillC" transform="scale(0.6)" />
+            <use href="#hillC" transform="scale(0.35)" />
+            <circle class="vertex" cx="0" cy="0" r="2.5" />
+          </g>
+        </g>
+
+        <!-- vértices geodésicos sueltos -->
+        <circle class="vertex" cx="360" cy="300" r="3" />
+        <circle class="vertex" cx="1080" cy="300" r="3" />
+        <circle class="vertex" cx="360" cy="660" r="3" />
+        <circle class="vertex" cx="1080" cy="660" r="3" />
+        <circle class="vertex" cx="840" cy="120" r="2.5" />
+        <circle class="vertex" cx="180" cy="420" r="2.5" />
+      </g>
+    </svg>
+  </div>
+
+  <div class="geo-glow g1" aria-hidden="true"></div>
+  <div class="geo-glow g2" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
   <nav>
-    <a href="#home" class="logo">
-      <span class="logo-dot"></span>
-      <span class="logo-text-normal">John Bareño</span>
+    <a href="#home" class="logo" aria-label="John Bareño — inicio">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" stroke-opacity=".22" />
+        <circle cx="16" cy="16" r="10" fill="none" stroke="currentColor" stroke-opacity=".45" />
+        <circle cx="16" cy="16" r="5.5" fill="none" stroke="currentColor" stroke-opacity=".75" />
+        <circle cx="16" cy="16" r="2.2" fill="currentColor" />
+      </svg>
+      <span>John Bareño
+        <span class="logo-sub">Dev GIS</span>
+      </span>
     </a>
+
     <ul class="nav-links">
       <li><a href="#home">Inicio</a></li>
-      <li><a href="#about">Perfil</a></li>
-      <li><a href="#services">Servicios</a></li>
-      <li><a href="#gallery">Proyectos</a></li>
-      <li><a href="#contact" class="nav-cta">Contacto</a></li>
+      <li><a href="#perfil">Perfil</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto" class="nav-cta">Contacto</a></li>
     </ul>
 
-    <label class="switch" title="Cambiar tema">
-      <span class="sun"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <g fill="#ffd43b">
-            <circle r="5" cy="12" cx="12"></circle>
-            <path
-              d="m21 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm-17 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm13.66-5.66a1 1 0 0 1 -.66-.29 1 1 0 0 1 0-1.41l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1 -.75.29zm-12.02 12.02a1 1 0 0 1 -.71-.29 1 1 0 0 1 0-1.41l.71-.66a1 1 0 0 1 1.41 1.41l-.71.71a1 1 0 0 1 -.7.24zm6.36-14.36a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm0 17a1 1 0 0 1 -1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1 -1 1zm-5.66-14.66a1 1 0 0 1 -.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.29zm12.02 12.02a1 1 0 0 1 -.7-.29l-.66-.71a1 1 0 0 1 1.36-1.36l.71.71a1 1 0 0 1 0 1.41 1 1 0 0 1 -.71.24z">
-            </path>
-          </g>
-        </svg></span>
-      <span class="moon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-          <path
-            d="m223.5 32c-123.5 0-223.5 100.3-223.5 224s100 224 223.5 224c60.6 0 115.5-24.2 155.8-63.4 5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6-96.9 0-175.5-78.8-175.5-176 0-65.8 36-123.1 89.3-153.3 6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z">
-          </path>
-        </svg></span>
-      <input type="checkbox" class="input" id="themeToggle" aria-label="Cambiar tema" checked>
-      <span class="slider"></span>
-    </label>
+    <button class="theme-btn" id="themeToggle" type="button" aria-label="Cambiar tema claro / oscuro">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-13.5a1 1 0 0 1-1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1-1 1zm0 20a1 1 0 0 1-1-1v-1a1 1 0 0 1 2 0v1a1 1 0 0 1-1 1zM3.5 13h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zm18 0h-1a1 1 0 0 1 0-2h1a1 1 0 0 1 0 2zM5.6 6.99a1 1 0 0 1-.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1-.71 1.7zm13.51 13.51a1 1 0 0 1-.7-.29l-.71-.71a1 1 0 0 1 1.41-1.41l.71.71a1 1 0 0 1-.71 1.7zM4.89 20.5a1 1 0 0 1-.71-1.7l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-.7.29zM18.4 6.99a1 1 0 0 1-.71-1.7l.71-.71a1 1 0 1 1 1.41 1.41l-.71.71a1 1 0 0 1-.7.29z" />
+      </svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M21.6 14.2a1 1 0 0 0-1.16-.3 7.4 7.4 0 0 1-9.98-8.9 1 1 0 0 0-1.3-1.2A9.4 9.4 0 1 0 21.9 15.4a1 1 0 0 0-.3-1.2z" />
+      </svg>
+    </button>
 
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false"
+      aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- HERO -->
-  <section id="home">
-    <div class="hero-bg-circle c1"></div>
-    <div class="hero-bg-circle c2"></div>
-
-    <div class="hero-content">
-      <div class="hero-badge">Disponible para proyectos freelance</div>
-
-      <h1 class="hero-title">
-        <span class="line">Ingeniero</span>
-        <span class="line accent">GIS &amp; Dev</span>
-        <span class="line">Full Stack</span>
-      </h1>
-
-      <p class="hero-sub">
-        Construyo aplicaciones geoespaciales web de alto impacto — desde infraestructuras de datos espaciales hasta
-        geovisores interactivos — con más de 5 años de experiencia.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#gallery" class="btn-primary">Ver proyectos</a>
-        <a href="#contact" class="btn-ghost">Trabajemos juntos →</a>
-      </div>
+  <!-- ============ MENÚ MÓVIL ============ -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#perfil"><span>01</span> Perfil</a>
+    <a href="#servicios"><span>02</span> Servicios</a>
+    <a href="#proyectos"><span>03</span> Proyectos</a>
+    <a href="#contacto"><span>04</span> Contacto</a>
+    <div class="mm-foot">
+      BOGOTÁ · COLOMBIA<br>
+      +57 314 310 3523
     </div>
+  </div>
 
-    <div class="hero-stats">
-      <div class="stat-card">
-        <div class="stat-number">5+</div>
-        <div class="stat-label">Años de exp.</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">10+</div>
-        <div class="stat-label">Tecnologías</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">GIS</div>
-        <div class="stat-label">Especialista</div>
-      </div>
-    </div>
+  <main>
 
-    <!-- Mapa decorativo -->
-    <div style="position:absolute;right:0;top:0;bottom:0;width:40%;opacity:0.07;pointer-events:none;overflow:hidden;">
-      <svg width="100%" height="100%" viewBox="0 0 500 700" xmlns="http://www.w3.org/2000/svg">
-        <line x1="0" y1="150" x2="500" y2="150" stroke="#00e5c8" stroke-width="1" />
-        <line x1="0" y1="300" x2="500" y2="300" stroke="#00e5c8" stroke-width="1" />
-        <line x1="0" y1="450" x2="500" y2="450" stroke="#00e5c8" stroke-width="1" />
-        <line x1="0" y1="600" x2="500" y2="600" stroke="#00e5c8" stroke-width="1" />
-        <line x1="100" y1="0" x2="100" y2="700" stroke="#00e5c8" stroke-width="1" />
-        <line x1="250" y1="0" x2="250" y2="700" stroke="#00e5c8" stroke-width="1" />
-        <line x1="400" y1="0" x2="400" y2="700" stroke="#00e5c8" stroke-width="1" />
-        <polygon points="80,200 200,120 340,180 420,100 480,160 480,380 340,320 200,400 80,350" fill="none"
-          stroke="#00e5c8" stroke-width="2" />
-        <polygon points="50,400 180,350 300,430 420,370 480,430 480,620 300,580 150,640 50,590" fill="none"
-          stroke="#00e5c8" stroke-width="2" />
-        <circle class="map-dot" cx="200" cy="180" r="5" fill="#00e5c8" />
-        <circle class="map-dot" cx="340" cy="320" r="5" fill="#00e5c8" />
-        <circle class="map-dot" cx="420" cy="370" r="5" fill="#00e5c8" />
-        <circle class="map-dot" cx="150" cy="430" r="5" fill="#00e5c8" />
-      </svg>
-    </div>
-  </section>
+    <!-- ============ HERO ============ -->
+    <section id="home">
+      <div class="hero-inner">
+        <div class="hero-badge">Disponible para proyectos</div>
 
-  <div class="divider"></div>
+        <h1 class="hero-title">
+          <span class="line"><span>Ingeniero</span></span>
+          <span class="line"><span class="outline">Geoespacial</span></span>
+          <span class="line"><span>&amp; GeoAI</span></span>
+        </h1>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <div class="section-label">Sobre mí</div>
-        <h2 class="section-title">Donde la geografía<br>se encuentra con el código</h2>
-        <p>Soy <strong>ingeniero catastral y geodesta</strong> apasionado por el desarrollo web y las tecnologías
-          geoespaciales. A lo largo de mi carrera he trabajado como desarrollador <strong>front-end y back-end</strong>,
-          analista de datos geográficos y líder de proyectos GIS.</p>
-        <p>Mi experiencia me permite desarrollar <strong>aplicaciones web geográficas</strong>, implementar
-          infraestructuras de datos espaciales, automatizar procesos de información geográfica y diseñar bases de datos
-          espaciales robustas.</p>
-
-        <div style="margin-top:2.5rem;">
-          <div class="section-label" style="margin-bottom:1rem;">Stack tecnológico</div>
-          <div class="tech-cloud">
-            <span class="tech-tag highlight">Angular</span>
-            <span class="tech-tag highlight">React</span>
-            <span class="tech-tag highlight">JavaScript</span>
-            <span class="tech-tag highlight">Python</span>
-            <span class="tech-tag">Node.js</span>
-            <span class="tech-tag">Express.js</span>
-            <span class="tech-tag">PostgreSQL</span>
-            <span class="tech-tag">PostGIS</span>
-            <span class="tech-tag">ArcPy</span>
-            <span class="tech-tag">GIT</span>
-            <span class="tech-tag">ArcGIS Pro</span>
-            <span class="tech-tag">QGIS</span>
-            <span class="tech-tag">GeoServer</span>
-            <span class="tech-tag">GeoNode</span>
-            <span class="tech-tag">Leaflet</span>
-            <span class="tech-tag">OpenLayers</span>
-            <span class="tech-tag">Power BI</span>
-            <span class="tech-tag">ArcGIS Enterprise</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="about-visual reveal">
-        <div class="profile-frame">
-          <!-- REEMPLAZA "assets/img/profile.png" con tu foto real -->
-          <!-- Si tienes la imagen, descomenta la siguiente línea y comenta el div .profile-placeholder -->
-          <img src="assets/img/profile.png" alt="John Bareño">
-
-        </div>
-        <div class="floating-badge" style="top:10%;right:-1rem;">⚡ Full Stack</div>
-        <div class="floating-badge" style="bottom:10%;left:-1rem;">🗺 GIS Expert</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="section-label">Lo que hago</div>
-    <h2 class="section-title">Servicios</h2>
-    <p class="section-desc">Soluciones geoespaciales a medida para organizaciones que necesitan extraer valor de sus
-      datos geográficos.</p>
-
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon">🗺</div>
-        <div class="service-title">Geovisores Web</div>
-        <p class="service-desc">Geovisores web interactivos a medida con Leaflet, OpenLayers y ArcGIS SDK para
-          visualización de datos geográficos en línea.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">⚙️</div>
-        <div class="service-title">Aplicaciones Geoespaciales</div>
-        <p class="service-desc">Aplicaciones web geográficas a medida con tecnologías modernas, integradas con bases de
-          datos espaciales y servicios OGC.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🛢</div>
-        <div class="service-title">Base de Datos Espacial</div>
-        <p class="service-desc">Diseño e implementación de bases de datos espaciales con PostgreSQL + PostGIS,
-          integradas con SIG y formularios de campo.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">🌐</div>
-        <div class="service-title">Infraestructura de Datos Espaciales</div>
-        <p class="service-desc">Implementación de IDE corporativas para almacenamiento y gestión de servicios web
-          geográficos OGC con GeoServer y GeoNode.</p>
-      </div>
-      <div class="service-card reveal">
-        <div class="service-icon">📡</div>
-        <div class="service-title">Gestión de Información Geográfica</div>
-        <p class="service-desc">Creación, edición y procesamiento de información geográfica. Generación de cartografía
-          digital a medida.</p>
-      </div>
-      <div class="service-card reveal"
-        style="background:linear-gradient(135deg,rgba(0,229,200,0.05),rgba(0,136,255,0.05));border-color:var(--border2);">
-        <div class="service-icon">💬</div>
-        <div class="service-title">Consultoría GIS</div>
-        <p class="service-desc">Asesoramiento técnico en proyectos geoespaciales, selección de tecnologías y
-          arquitecturas de solución para equipos y organizaciones.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- GALLERY -->
-  <section id="gallery">
-    <div class="section-label">Portafolio</div>
-    <h2 class="section-title">Galería de Aplicaciones</h2>
-    <p class="section-desc">Ejemplos demostrativos de las soluciones desarrolladas. Cada proyecto es interactivo y
-      funcional.</p>
-
-    <div class="gallery-grid">
-      <div class="gallery-card reveal">
-        <!-- Si tienes imagen del geovisor, usa: <img class="gallery-thumb" src="assets/img/apps/geovisor_leaflet.png" alt="Geovisores"> -->
-        <img class="gallery-thumb" src="assets/img/apps/geovisor_leaflet.png" alt="Geovisores">
-        <div class="gallery-info">
-          <div class="gallery-tag">Geovisor</div>
-          <div class="gallery-title">Geovisores Interactivos</div>
-          <p class="gallery-desc">Geovisores con Leaflet, OpenLayers y ArcGIS SDK con capas WMS y datos geoespaciales
-            dinámicos.</p>
-        </div>
-        <div class="gallery-links">
-          <a href="https://john-bareno-devgis.github.io/Geovisor/arcgis.html" target="_blank"
-            class="gallery-link">ArcGIS SDK</a>
-          <a href="https://john-bareno-devgis.github.io/Geovisor/leaflet.html" target="_blank"
-            class="gallery-link">Leaflet</a>
-          <a href="https://john-bareno-devgis.github.io/Geovisor/openlayers.html" target="_blank"
-            class="gallery-link">OpenLayers</a>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal">
-        <!-- Si tienes imagen, usa: -->
-        <img class="gallery-thumb" src="assets/img/apps/appGeo.png" alt="Aplicación GIS">
-        <div class="gallery-info">
-          <div class="gallery-tag">Aplicación GIS</div>
-          <div class="gallery-title">Aplicación Geográfica</div>
-          <p class="gallery-desc">Aplicación geográfica completa con herramientas SIG avanzadas, análisis espacial y
-            edición de datos en campo.</p>
-        </div>
-        <div class="gallery-links">
-          <a href="https://john-bareno-devgis.github.io/aplicaciones/SIGApp/" class="gallery-link">Ver demo</a>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal" style="border-color:var(--border2);">
-        <img class="gallery-thumb" src="assets/img/new_app.png" alt="Aplicación GIS">
-        <div class="gallery-info">
-          <div class="gallery-tag" style="color:var(--muted);">En desarrollo</div>
-          <div class="gallery-title">¿Tu proyecto aquí?</div>
-          <p class="gallery-desc">Estoy disponible para nuevos proyectos. Contáctame y construyamos algo extraordinario
-            juntos.</p>
-        </div>
-        <div class="gallery-links">
-          <a href="#contact" class="gallery-link">Hablemos →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-grid">
-      <div class="reveal">
-        <div class="section-label">Contacto</div>
-        <h2 class="contact-info-title">¿Tienes un<br>proyecto en<br><span class="accent">mente?</span></h2>
-        <p style="color:var(--muted);margin-top:1rem;font-size:1rem;line-height:1.7;">
-          Si deseas más información, una cotización o tienes una idea de proyecto, escríbeme. Estaré encantado de
-          asesorarte.
+        <p class="hero-sub">
+          Construyo aplicaciones web geográficas y modelos de inteligencia artificial aplicados a datos espaciales.
+          Más de 5 años resolviendo problemas de catastro, ordenamiento territorial y avalúos con código.
         </p>
 
-        <div class="contact-items">
-          <div class="contact-item">
-            <div class="contact-item-icon">📍</div>
-            <div>
-              <div class="contact-item-label">Ubicación</div>
-              <div class="contact-item-value">Bogotá D.C., Colombia</div>
-            </div>
+        <div class="hero-actions">
+          <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+          <a href="#contacto" class="btn btn-ghost">Trabajemos juntos →</a>
+        </div>
+
+        <div class="hero-strip">
+          <div class="strip-item">
+            <div class="strip-key">Rol actual</div>
+            <div class="strip-val">IGAC <small>· Profesional SIG</small></div>
           </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">📞</div>
-            <div>
-              <div class="contact-item-label">Teléfono</div>
-              <div class="contact-item-value">+57 3143103523</div>
-            </div>
+          <div class="strip-item">
+            <div class="strip-key">Experiencia</div>
+            <div class="strip-val">5+ <small>años</small></div>
           </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">✉️</div>
-            <div>
-              <div class="contact-item-label">Correo electrónico</div>
-              <div class="contact-item-value">johnbarenodevsig@gmail.com</div>
-            </div>
+          <div class="strip-item">
+            <div class="strip-key">Formación</div>
+            <div class="strip-val">Maestría <small>· en curso</small></div>
+          </div>
+          <div class="strip-item">
+            <div class="strip-key">Base</div>
+            <div class="strip-val">Bogotá <small>· Colombia</small></div>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- <div class="contact-form reveal">
-        <div style="margin-bottom:0.5rem;">
-          <div style="font-family:'Saira',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.25rem;">
-            Envíame un mensaje</div>
-          <div style="font-size:0.85rem;color:var(--muted);">Respondo en menos de 24 horas</div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Nombre</label>
-          <input type="text" class="form-input" placeholder="Tu nombre completo">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Correo electrónico</label>
-          <input type="email" class="form-input" placeholder="tu@correo.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Servicio de interés</label>
-          <select class="form-input">
-            <option value="">Selecciona un servicio...</option>
-            <option>Geovisor web</option>
-            <option>Aplicación geoespacial</option>
-            <option>Base de datos espacial</option>
-            <option>Infraestructura de datos espaciales</option>
-            <option>Gestión de información geográfica</option>
-            <option>Consultoría GIS</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Mensaje</label>
-          <textarea class="form-input" placeholder="Cuéntame sobre tu proyecto..."></textarea>
-        </div>
-        <button class="form-submit" onclick="handleSubmit(this)">Enviar mensaje →</button>
-      </div> -->
-    </div>
-  </section>
+    <!-- ============ CAPA 01 · PERFIL ============ -->
+    <section id="perfil">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="layer-label">Capa 01 — Perfil</div>
+          <h2 class="section-title">Donde la geografía<br>se encuentra con el <span class="accent">código</span></h2>
 
-  <!-- FOOTER -->
+          <p>Soy <strong>ingeniero catastral y geodesta</strong> especializado en el desarrollo de aplicaciones web y en
+            soluciones de inteligencia artificial aplicada a datos espaciales (<strong>GeoAI</strong>). Trabajo en la
+            frontera entre el análisis territorial y la ingeniería de software.</p>
+
+          <p>Actualmente en el <strong>Instituto Geográfico Agustín Codazzi</strong>, donde implemento flujos de
+            <em>computer vision</em> para clasificación automática de coberturas vegetales y zonas geoeconómicas, diseño
+            aplicaciones con <strong>ArcGIS Maps SDK</strong> y construyo tableros de control con indicadores de
+            ordenamiento territorial.
+          </p>
+
+          <p>Antes lideré el desarrollo de un SIG web y su infraestructura de datos espaciales para operaciones
+            catastrales, y construí <strong>pipelines ETL en Python</strong> para capturar ofertas inmobiliarias masivas
+            y mejorar la precisión de los avalúos prediales.</p>
+
+          <dl class="credentials">
+            <div class="cred-row">
+              <dt>Profesión</dt>
+              <dd>Ingeniero Catastral y Geodesta <em>— U. Distrital, 2019</em></dd>
+            </div>
+            <div class="cred-row">
+              <dt>Maestría</dt>
+              <dd>Gestión de la Información y Tecnologías Geoespaciales <em>— U. Sergio Arboleda, en curso</em></dd>
+            </div>
+            <div class="cred-row">
+              <dt>Actualidad</dt>
+              <dd>Contratista Profesional SIG <em>— IGAC, desde 2024</em></dd>
+            </div>
+            <div class="cred-row">
+              <dt>Cursos</dt>
+              <dd>Inteligencia Artificial <em>— IGAC</em> · REST API con Python y JavaScript <em>— EAFIT</em></dd>
+            </div>
+          </dl>
+
+          <div class="stack-title">Stack tecnológico</div>
+          <div class="tech-cloud">
+            <span class="tech-tag key">Python</span>
+            <span class="tech-tag key">TypeScript</span>
+            <span class="tech-tag key">Angular</span>
+            <span class="tech-tag key">React</span>
+            <span class="tech-tag key">PostgreSQL + PostGIS</span>
+            <span class="tech-tag key">Deep Learning</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">ArcGIS Maps SDK</span>
+            <span class="tech-tag">ArcGIS Arcade</span>
+            <span class="tech-tag">ArcGIS Enterprise</span>
+            <span class="tech-tag">ArcGIS Pro</span>
+            <span class="tech-tag">QGIS Server / Cloud</span>
+            <span class="tech-tag">GeoNode</span>
+            <span class="tech-tag">GeoServer</span>
+            <span class="tech-tag">Google Earth Engine</span>
+            <span class="tech-tag">Leaflet</span>
+            <span class="tech-tag">OpenLayers</span>
+            <span class="tech-tag">MapLibre</span>
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">ArcGIS Dashboards</span>
+            <span class="tech-tag">ETL</span>
+          </div>
+        </div>
+
+        <div class="about-visual reveal">
+          <figure class="portrait">
+            <img src="assets/img/profile.png" alt="Retrato de John Bareño" width="640" height="800" loading="lazy">
+            <figcaption class="portrait-tag">John Bareño · Dev GIS</figcaption>
+          </figure>
+          <div class="coord-note">
+            <span>04°42′N 74°04′W</span>
+            <span>EPSG:4326</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CAPA 02 · SERVICIOS ============ -->
+    <section id="servicios">
+      <div class="layer-label">Capa 02 — Servicios</div>
+      <h2 class="section-title">Lo que construyo</h2>
+      <p class="section-desc">Soluciones geoespaciales a medida para entidades y organizaciones que necesitan extraer
+        valor real de sus datos geográficos.</p>
+
+      <div class="services-grid">
+        <article class="service-card reveal" data-idx="01">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3z" />
+              <path d="M9 3v15M15 6v15" />
+            </svg>
+          </div>
+          <h3 class="service-title">Geovisores Web</h3>
+          <p class="service-desc">Visores cartográficos interactivos con Leaflet, OpenLayers, MapLibre y ArcGIS Maps
+            SDK, conectados a servicios WMS/WFS y datos dinámicos.</p>
+        </article>
+
+        <article class="service-card reveal" data-idx="02">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="18" rx="2" />
+              <path d="M2 9h20M6 6h.01M9 6h.01" />
+            </svg>
+          </div>
+          <h3 class="service-title">Aplicaciones Geoespaciales</h3>
+          <p class="service-desc">Aplicaciones web geográficas completas con Angular, React y Node.js, integradas con
+            bases de datos espaciales y servicios OGC.</p>
+        </article>
+
+        <article class="service-card reveal" data-idx="03">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="7" y="7" width="10" height="10" rx="2" />
+              <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
+            </svg>
+          </div>
+          <h3 class="service-title">GeoAI &amp; Deep Learning</h3>
+          <p class="service-desc">Modelos de <em>computer vision</em> para clasificación de coberturas y detección de
+            cambios, y análisis predictivo aplicado a procesos territoriales.</p>
+        </article>
+
+        <article class="service-card reveal" data-idx="04">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <ellipse cx="12" cy="5" rx="8" ry="3" />
+              <path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5" />
+              <path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" />
+            </svg>
+          </div>
+          <h3 class="service-title">Bases de Datos Espaciales</h3>
+          <p class="service-desc">Diseño e implementación con PostgreSQL + PostGIS, modelado de datos catastrales e
+            integración con SIG y formularios de campo.</p>
+        </article>
+
+        <article class="service-card reveal" data-idx="05">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="7" rx="2" />
+              <rect x="2" y="14" width="20" height="7" rx="2" />
+              <path d="M6 6.5h.01M6 17.5h.01" />
+            </svg>
+          </div>
+          <h3 class="service-title">Infraestructura de Datos Espaciales</h3>
+          <p class="service-desc">Implementación de IDE corporativas para publicar y gobernar servicios web geográficos
+            OGC con GeoServer, GeoNode, QGIS Server y ArcGIS Enterprise.</p>
+        </article>
+
+        <article class="service-card reveal" data-idx="06">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 3v18h18" />
+              <path d="M7 15v3M12 10v8M17 6v12" />
+            </svg>
+          </div>
+          <h3 class="service-title">Tableros &amp; Automatización</h3>
+          <p class="service-desc">Tableros de control con Power BI y ArcGIS Dashboards, definición de indicadores y
+            procesos ETL en Python para datos masivos.</p>
+        </article>
+
+        <article class="service-card reveal" data-idx="07">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z" />
+              <path d="M2 12h20M12 2c2.8 3 4.2 6.3 4.2 10S14.8 19 12 22c-2.8-3-4.2-6.3-4.2-10S9.2 5 12 2z" />
+            </svg>
+          </div>
+          <h3 class="service-title">Gestión de Información Geográfica</h3>
+          <p class="service-desc">Creación, edición, validación y procesamiento de información geográfica, con
+            generación de cartografía digital a medida.</p>
+        </article>
+
+        <article class="service-card reveal" data-idx="08">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <h3 class="service-title">Consultoría GIS</h3>
+          <p class="service-desc">Asesoría técnica en proyectos geoespaciales: selección de tecnologías, arquitectura de
+            solución y acompañamiento a equipos.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ CAPA 03 · PROYECTOS ============ -->
+    <section id="proyectos">
+      <div class="layer-label">Capa 03 — Proyectos</div>
+      <h2 class="section-title">Galería de aplicaciones</h2>
+      <p class="section-desc">Demostraciones funcionales de las soluciones que desarrollo. Cada una es interactiva y se
+        puede explorar en vivo.</p>
+
+      <div class="gallery-grid">
+        <article class="gallery-card reveal">
+          <div class="gallery-media">
+            <span class="gallery-tag">Geovisor</span>
+            <img src="assets/img/apps/geovisor_leaflet.png" alt="Geovisores interactivos" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Geovisores Interactivos</h3>
+            <p class="gallery-desc">La misma cartografía servida con cuatro librerías distintas, con capas WMS y datos
+              geoespaciales dinámicos. Útil para comparar rendimiento y ergonomía de cada stack.</p>
+            <div class="gallery-links">
+              <a href="https://john-bareno-devgis.github.io/Geovisor/arcgis.html" target="_blank" rel="noopener"
+                class="gallery-link">ArcGIS SDK ↗</a>
+              <a href="https://john-bareno-devgis.github.io/Geovisor/leaflet.html" target="_blank" rel="noopener"
+                class="gallery-link">Leaflet ↗</a>
+              <a href="https://john-bareno-devgis.github.io/Geovisor/openlayers.html" target="_blank" rel="noopener"
+                class="gallery-link">OpenLayers ↗</a>
+              <a href="https://john-bareno-devgis.github.io/Geovisor/maplibre.html" target="_blank" rel="noopener"
+                class="gallery-link">MapLibre ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gallery-card reveal">
+          <div class="gallery-media">
+            <span class="gallery-tag">Aplicación GIS</span>
+            <img src="assets/img/apps/appGeo.png" alt="Aplicación geográfica" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">Aplicación Geográfica</h3>
+            <p class="gallery-desc">Aplicación completa con herramientas SIG avanzadas: análisis espacial, consulta de
+              atributos y edición de datos en campo sobre una base espacial.</p>
+            <div class="gallery-links">
+              <a href="https://john-bareno-devgis.github.io/aplicaciones/SIGApp/" target="_blank" rel="noopener"
+                class="gallery-link">Ver demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="gallery-card dashed reveal">
+          <div class="gallery-media">
+            <span class="gallery-tag">Disponible</span>
+            <img src="assets/img/new_app.png" alt="Nuevo proyecto" loading="lazy">
+          </div>
+          <div class="gallery-body">
+            <h3 class="gallery-title">¿Tu proyecto acá?</h3>
+            <p class="gallery-desc">Tengo agenda abierta para nuevos proyectos geoespaciales. Cuéntame qué necesitas y
+              armamos juntos la solución.</p>
+            <div class="gallery-links">
+              <a href="#contacto" class="gallery-link">Hablemos →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ CAPA 04 · CONTACTO ============ -->
+    <section id="contacto">
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="layer-label">Capa 04 — Contacto</div>
+          <h2 class="contact-title">¿Tienes un<br>proyecto en<br><span class="accent">mente?</span></h2>
+          <p class="contact-lead">Si quieres más información, una cotización o tienes una idea dando vueltas, escríbeme.
+            Te respondo el mismo día.</p>
+        </div>
+
+        <div class="contact-items reveal">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">Ubicación</div>
+              <div class="contact-value">Bogotá D.C., Colombia</div>
+            </div>
+          </div>
+
+          <a class="contact-item" href="https://wa.me/573143103523" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">Teléfono / WhatsApp</div>
+              <div class="contact-value">+57 314 310 3523</div>
+            </div>
+          </a>
+
+          <a class="contact-item" href="mailto:johnbarenodevsig@gmail.com">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-10 6L2 7" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">Correo electrónico</div>
+              <div class="contact-value">johnbarenodevsig@gmail.com</div>
+            </div>
+          </a>
+
+          <a class="contact-item" href="https://www.linkedin.com/in/john-bareno-devgis/" target="_blank" rel="noopener">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="3" />
+                <path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 0 1 4 0v4" />
+              </svg>
+            </div>
+            <div>
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">in/john-bareno-devgis</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
   <footer>
     <div>
       <div class="footer-name">John Bareño — Dev GIS</div>
-      <div class="footer-copy">© 2026 · Bogotá, Colombia</div>
+      <div class="footer-meta">© 2026 · BOGOTÁ, COLOMBIA · 04°42′N 74°04′W</div>
     </div>
     <div class="footer-socials">
-      <a href="https://github.com/john-bareno-devgis" target="_blank">GitHub</a>
-      <a href="mailto:johnbarenodevsig@gmail.com">Email</a>
+      <a href="https://github.com/john-bareno-devgis" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.53.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.65.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 24 12.5C24 5.87 18.63.5 12 .5z" />
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/john-bareno-devgis/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+        </svg>
+      </a>
+      <a href="mailto:johnbarenodevsig@gmail.com" aria-label="Correo electrónico">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5-8-5V6l8 5 8-5v2.24z" />
+        </svg>
+      </a>
     </div>
   </footer>
+
+  <!-- HUD cartográfico -->
+  <div class="hud" aria-hidden="true">
+    <span class="dot"></span>
+    <span id="hudCoords">04°42′23″N 074°04′11″W</span>
+    <span class="sep">|</span>
+    <span id="hudZoom">Z 12.0</span>
+  </div>
 
   <script src="assets/js/main.js"></script>
 </body>
